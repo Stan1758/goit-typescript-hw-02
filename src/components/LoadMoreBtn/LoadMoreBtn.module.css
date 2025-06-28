@@ -1,0 +1,23 @@
+.container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: inherit;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  transition: border-color 0.25s;
+
+  border: 1px solid transparent;
+}
+
+.button:hover {
+  background-color: #1a1a1a;
+  border-color: #646cff;
+}

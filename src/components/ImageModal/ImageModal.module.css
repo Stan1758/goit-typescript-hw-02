@@ -1,0 +1,65 @@
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.85);
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  display: inline-block;
+  max-width: 90vw;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.image {
+  width: auto;
+  max-width: 90vw;
+  max-height: 70vh;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.details {
+  text-align: left;
+  font-size: 16px;
+  color: #333;
+}
+
+.link {
+  display: inline-block;
+  margin-top: 5px;
+  color: black;
+  text-decoration: none;
+}
+.link:hover {
+  color: rgb(81, 51, 14);
+}
+p {
+  margin: 0;
+}
