@@ -1,5 +1,6 @@
 import "./App.css";
 
+import type { UnsplashImage, UnsplashResponse } from "./App.types";
 import toast, { Toaster } from "react-hot-toast";
 import { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
@@ -11,16 +12,21 @@ import LoadMore from "../LoadMoreBtn/LoadMoreBtn";
 
 const ACCESS_KEY = "8spJw71vctj93yz3wv-AGK87NS6KqcVJh2bnR6Ku8y4";
 
-const App = () => {
-  const [images, setImages] = useState([]);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+const App = (): JSX.Element => {
+  const [images, setImages] = useState<UnsplashImage[]>([]);
+  const [selectedImage, setSelectedImage] = useState<UnsplashImage | null>(
+    null
+  );
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(1);
 
-  const fetchImages = async (query, pageNumber = 1) => {
+  const fetchImages = async (
+    query: string,
+    pageNumber: number = 1
+  ): Promise<void> => {
     setLoading(true);
     setError(null);
 
@@ -33,7 +39,7 @@ const App = () => {
         throw new Error(`Помилка: ${response.status} ${response.statusText}`);
       }
 
-      const data = await response.json();
+      const data: UnsplashResponse = await response.json();
 
       if (data.results.length === 0) {
         toast("Нічого не знайдено");
@@ -59,6 +65,7 @@ const App = () => {
       setPage(pageNumber);
       setTotalPages(data.total_pages);
     } catch (error) {
+      console.error(error);
       setError("Помилка при завантаженні зображень");
       setImages([]);
     } finally {
@@ -66,13 +73,13 @@ const App = () => {
     }
   };
 
-  const handleSearch = (query) => {
+  const handleSearch = (query: string): void => {
     setSearchQuery(query);
     setPage(1);
     fetchImages(query, 1);
   };
 
-  const loadMore = () => {
+  const loadMore = (): void => {
     fetchImages(searchQuery, page + 1);
   };
 

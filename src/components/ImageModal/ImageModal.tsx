@@ -1,7 +1,16 @@
 import Modal from "react-modal";
 import s from "./ImageModal.module.css";
+import type { UnsplashImage } from "../App/App.types";
 
-const ImageModal = ({ image, onClose }) => {
+interface ImageModalProps {
+  image: UnsplashImage | null;
+  onClose: () => void;
+}
+
+const ImageModal = ({
+  image,
+  onClose,
+}: ImageModalProps): JSX.Element | null => {
   if (!image) return null;
 
   const { urls, alt_description, user, likes, description } = image;

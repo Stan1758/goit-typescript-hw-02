@@ -1,12 +1,18 @@
 import s from "./ImageCard.module.css";
+import type { UnsplashImage } from "../App/App.types";
 
-const ImageCard = ({ image, onClick }) => {
+interface ImageCardProps {
+  image: UnsplashImage;
+  onClick: (image: UnsplashImage) => void;
+}
+
+const ImageCard = ({ image, onClick }: ImageCardProps): JSX.Element => {
   const { urls, alt_description } = image;
 
   return (
     <div className={s.card}>
       <img
-        src={urls.thumb}
+        src={urls.thumb ?? urls.small}
         alt={
           alt_description && alt_description.length <= 18 ? alt_description : ""
         }

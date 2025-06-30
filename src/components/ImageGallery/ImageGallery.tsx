@@ -1,8 +1,17 @@
 import React from "react";
 import s from "./ImageGallery.module.css";
 import ImageCard from "../ImageCard/ImageCard";
+import type { UnsplashImage } from "../App/App.types";
 
-const ImageGallery = ({ images, onImageClick }) => {
+interface ImageGalleryProps {
+  images: UnsplashImage[];
+  onImageClick: (image: UnsplashImage) => void;
+}
+
+const ImageGallery = ({
+  images,
+  onImageClick,
+}: ImageGalleryProps): JSX.Element => {
   return (
     <ul className={s.gallery}>
       {images.map((img) => (

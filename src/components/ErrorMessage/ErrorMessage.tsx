@@ -1,9 +1,13 @@
 import styles from "./ErrorMessage.module.css";
 
-const ErrorMessage = ({ message }) => {
+interface ErrorMessageProps {
+  message?: string;
+}
+
+const ErrorMessage = ({ message }: ErrorMessageProps): JSX.Element => {
   return (
     <div className={styles.message}>
-      <p> {message || "Сталася помилка при завантаженні зображень."}</p>
+      <p>{message || "Сталася помилка при завантаженні зображень."}</p>
     </div>
   );
 };
