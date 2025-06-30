@@ -1,4 +1,3 @@
-import React from "react";
 import s from "./ImageGallery.module.css";
 import ImageCard from "../ImageCard/ImageCard";
 import type { UnsplashImage } from "../App/App.types";

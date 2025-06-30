@@ -21,10 +21,3 @@ export interface UnsplashResponse {
   results: UnsplashImage[];
   total_pages: number;
 }
-
-urls: {
-  thumb: string;
-  small: string;
-  regular: string;
-  full: string;
-}
